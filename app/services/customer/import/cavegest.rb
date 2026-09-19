@@ -6,27 +6,28 @@ class Customer::Import::Cavegest < Importer::Base
   def call
     imported = 0
 
-    sheet.parse(headers: true).drop(1).each do |row|
-      next if N.text(row["Code"]).nil?
-      next if N.text(row["Code"]) == "TOTAL"
+    (2..sheet.last_row).each do |i|
+        row = sheet.row(i)
+      next if row[0].nil?
+      next if row[0].to_s == "TOTAL"
 
       customer = Customer.new(
-        reference:         N.text(row["Code"]),
-        company_name:      N.text(row["Libellé"]),
-        first_name:        N.text(row["Prénom"]),
-        last_name:         N.text(row["Nom"]),
-        address1:          N.text(row["Adresse"]),
-        city:              N.text(row["Ville"]),
-        zip:               N.zip(row["Code postal"]),
-        country_code:      N.country_code(row["Pays"]),
-        phone:             row["Téléphone 1"].to_s,
-        mobile:            row["Téléphone 2"].to_s,
-        email:             row["EMail"].to_s,
-        kind:              KINDS[N.text(row["Code famille client"])],
-        customer_category: N.text(row["Libellé famille client"]),
-        price_grid_code:   N.text(row["Code categ tarif"]),
-        vat_number:        N.text(row["Numéro de TVA"]),
-        excise_number:     N.text(row["Numéro d Accise"])
+        reference:         N.text(row[0]),
+        company_name:      N.text(row[3]),
+        first_name:        N.text(row[2]),
+        last_name:         N.text(row[1]),
+        address1:          N.text(row[4]),
+        city:              N.text(row[6]),
+        zip:               N.zip(row[5]),
+        country_code:      N.country_code(row[7]),
+        phone:             row[9].to_s,
+        mobile:            row[10].to_s,
+        email:             row[8].to_s,
+        kind:              KINDS[N.text(row[19])],
+        customer_category: N.text(row[20]),
+        price_grid_code:   N.text(row[21]),
+        vat_number:        N.text(row[23]),
+        excise_number:     N.text(row[24])
       )
 
 
@@ -36,7 +37,7 @@ class Customer::Import::Cavegest < Importer::Base
       else
         report.error(
          source:   source,
-          locator:  N.text(row["Code"]),
+          locator:  N.text(row[0]),
           message:  "Client rejeté : #{customer.errors.full_messages.join(', ')}"
         )
 

@@ -8,7 +8,7 @@ module Importer::Normalization
   end
 
   def zip(value, _country_code = "FR")
-    value.to_s.strip
+    value.to_s.strip.rjust(5, "0")
   end
 
   def country_code(value)
