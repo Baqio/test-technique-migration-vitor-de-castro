@@ -101,3 +101,9 @@ Les lignes vides et la ligne "TOTAL" sont ignorées.
 
 Code pays
 Les valeurs "FRANCE", "France", "fr" sont normalisées en "FR".
+
+Code postal
+Les codes postaux sont stockés sous forme d'entier dans Excel (ex: 1000 au lieu de 01000). Ils sont complétés à 5 chiffres avec des zéros à gauche.
+
+Colonnes dupliquées
+Le fichier Excel contient 27 colonnes, dont des doublons (Nom, Prénom, Adresse, etc.) pour l'adresse de facturation et l'adresse de livraison. La méthode parse(headers: true) de Roo écrase silencieusement les colonnes dupliquées. Les lignes sont lues par index pour éviter ce problème.
