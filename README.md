@@ -86,3 +86,18 @@ simplement pourquoi.
 Les gems aussi : `roo` est une suggestion, pas une contrainte.
 
 Bon courage.
+
+
+## Notes de reprise
+
+Code famille client
+Le code R (REVENDEUR) a été mappé vers customer. Les codes inconnus sont rejetés avec un message d'erreur.
+
+Feuille Excel
+Seule la feuille "Feuil1" a été utilisée. La feuille "clients" est marquée "NE PAS UTILISER".
+
+Lignes ignorées
+Les lignes vides et la ligne "TOTAL" sont ignorées.
+
+Code pays
+Les valeurs "FRANCE", "France", "fr" sont normalisées en "FR".
