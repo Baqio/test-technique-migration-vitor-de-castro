@@ -107,3 +107,6 @@ Les codes postaux sont stockés sous forme d'entier dans Excel (ex: 1000 au lieu
 
 Colonnes dupliquées
 Le fichier Excel contient 27 colonnes, dont des doublons (Nom, Prénom, Adresse, etc.) pour l'adresse de facturation et l'adresse de livraison. La méthode parse(headers: true) de Roo écrase silencieusement les colonnes dupliquées. Les lignes sont lues par index pour éviter ce problème.
+
+Adresse de livraison
+Quand les colonnes d'adresse de livraison (index 11-18) sont vides, use_billing_address est mis à true. Quand une adresse de livraison existe, use_billing_address est mis à false et les champs de livraison sont renseignés.
