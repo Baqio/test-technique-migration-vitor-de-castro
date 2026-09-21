@@ -110,3 +110,18 @@ Le fichier Excel contient 27 colonnes, dont des doublons (Nom, Prénom, Adresse,
 
 Adresse de livraison
 Quand les colonnes d'adresse de livraison (index 11-18) sont vides, use_billing_address est mis à true. Quand une adresse de livraison existe, use_billing_address est mis à false et les champs de livraison sont renseignés.
+
+Lignes SOUS-TOTAL
+Les lignes dont la référence commence par "SOUS-TOTAL" sont des sous-totaux par catégorie, pas des produits réels. Elles sont ignorées.
+
+Virgule décimale
+Les prix dans le fichier CSV utilisent la virgule comme séparateur décimal (format français). Ils sont convertis en point avant parsing.
+
+Idempotence
+L'import peut être relancé sans dégât. Les produits et tarifs existants sont mis à jour plutôt que recrées.
+
+Grille SALON
+Certains produits n'ont pas de tarif SALON (valeur vide). Un tarif à 0.00 est créé dans ce cas. 
+
+Encodage
+Le fichier CSV est encodé en ISO-8859-1 (ancien logiciel français). Converti en UTF-8 à la lecture.
