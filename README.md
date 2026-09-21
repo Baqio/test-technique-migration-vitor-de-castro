@@ -121,7 +121,13 @@ Idempotence
 L'import peut être relancé sans dégât. Les produits et tarifs existants sont mis à jour plutôt que recrées.
 
 Grille SALON
-Certains produits n'ont pas de tarif SALON (valeur vide). Un tarif à 0.00 est créé dans ce cas. 
+Certains produits n'ont pas de tarif SALON (valeur vide). Un tarif à 0.00 est créé dans ce cas.
 
 Encodage
 Le fichier CSV est encodé en ISO-8859-1 (ancien logiciel français). Converti en UTF-8 à la lecture.
+
+Clients sans nom
+T00078, T01803 et T04000 n'ont ni raison sociale, ni nom, ni prénom. Ils sont rejetés avec un message d'erreur explicite.
+
+Rapport d'import
+Le rapport liste les compteurs, les erreurs et les avertissements. Il est lisible par un non-développeur.
