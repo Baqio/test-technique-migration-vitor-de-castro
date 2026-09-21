@@ -62,20 +62,6 @@ pas développeuse.
 
 ---
 
-## Notes de reprise
-
-Ajoutez une courte section « Notes de reprise » à la fin de votre README, ou
-dans un fichier poussé sur le repo. Nous y cherchons ce qu'un collègue
-écrirait avant de partir en week-end :
-
-- ce que vous avez décidé sur les cas où les fichiers ne tranchaient pas ;
-- ce que vous feriez confirmer par le client avant de lancer la reprise en
-  réel.
-
-Quelques phrases suffisent. Nous ne cherchons pas un rapport, mais à comprendre
-vos arbitrages sans avoir à les deviner dans le code.
-
----
 
 ## Précisions
 
@@ -134,3 +120,10 @@ Le rapport liste les compteurs, les erreurs et les avertissements. Il est lisibl
 
 Audit
 L'audit vérifie depuis la base : le nombre de clients, le nombre de produits, le nombre de tarifs. Un écart est signalé si le compte ne correspond pas.
+
+À confirmer avec le client
+
+Les revendeurs (code R) ont été importés comme clients, a confirmer si une catégorie distincte est souhaitée
+Les clients T00078, T01803, T04000 sans nom, erreurs de saisie ou contacts à supprimer ?
+La grille SALON vide, tarif à 0.00 ou grille non applicable pour ces produits ?
+Le champ Téléphone 2 mappé vers mobile, confirmer si c'est bien un mobile ou un second fixe
