@@ -24,7 +24,36 @@ class MigrationReport
   def warnings = issues.select { |issue| issue.level == :warning }
 
   def to_s
-    raise NotImplementedError
+    lines = []
+    lines << "=== RAPPORT D'IMPORT ==="
+    lines << ""
+
+    lines << "Compteurs :"
+    @counters.each do |key,value|
+      lines << "  #{key} : #{value}"
+    end
+    lines << ""
+
+    lines << "Erreurs (#{errors.count}) :"
+    if errors.empty?
+      lines << "  Aucune erreur."
+    else
+    errors.each do |issue|
+      lines << " [#{issue.source}] #{issue.locator} — #{issue.message} "
+    end
+    end
+    lines << ""
+
+    lines << "Avertissements (#{warnings.count}) :"
+    if warnings.empty?
+      lines << "  Aucun avertissement."
+    else
+      warnings.each do |issue|
+        lines << "  [#{issue.source}] #{issue.locator} — #{issue.message}"
+      end
+    end
+
+    lines.join("\n")
   end
 
   private
